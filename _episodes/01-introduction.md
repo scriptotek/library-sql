@@ -108,7 +108,7 @@ sqlite>
 ~~~
 {: .sql}
 
-In order to see which tables you have in your databatase you can type:
+Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell. This shell has its own set of commands. For example, in order to see which tables you have in your databatase you can type:
 
 ~~~
 .tables

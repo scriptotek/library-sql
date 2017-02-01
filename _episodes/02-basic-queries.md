@@ -19,28 +19,72 @@ Let’s write an SQL query that selects only the title column from the
 articles table.
 
 ~~~
-SELECT title
-FROM articles;
+SELECT title FROM articles;
 ~~~
 {: .sql}
 
 We have capitalized the words SELECT and FROM because they are SQL keywords.
 SQL is case-insensitive, but it helps for readability, and is good style.
+Also note that SQLite demands queries to be terminated by a semicolon.
 
-If we want more information, we can add a new column to the list of fields,
-right after `SELECT`:
+If we want more information, we can add new columns to the list of fields,
+right after `SELECT`, separating with comma:
 
 ~~~
-SELECT title, authors, issns, date
-FROM articles;
+SELECT title, authors, issns FROM articles;
 ~~~
 {: .sql}
 
-Or we can select all of the columns in a table using the wildcard '*'
+You can change some SQLite settings to make the output easier to read.
+First, set the output mode to display left-aligned columns. 
+Then turn on the display of column headers.
+~~~
+.mode column
+.header on
+~~~
+{: .sql}
+
+Note that these commands like (`.quit`) are not terminated by a semicolon, in fact they __wont__ work
+if you put a semicolon at the end. __Rule:__ If it starts with a period, it does not end with semicolon.
+
+Let's try and see how `.mode column` and  `.header on` have affected our output, 
+by re-running the query from above, but now let's add a `LIMIT` clause:
 
 ~~~
-SELECT *
-FROM articles;
+SELECT title, authors, issns FROM articles LIMIT 10;
+~~~
+{: .sql}
+
+The `LIMIT 10` clause will show only the 10 first rows in the table.
+
+We can now see that `.header on` shows a header row, and that `.mode column` snugly lines up the 
+columns making them much easier to read. The drawback with `.mode column` is that only a limited length of 
+the columns are shown, cutting off the `title` and `authors` columns.
+
+You can change the width of the columns with `.width` like this:
+
+~~~
+.width 70 10
+~~~
+{: .sql}
+
+The `.width 70 10` tells the Sqlite to show the first 70 characters of the `title` column 
+and the first 10 characters of the `authors` column.
+
+To select all of the columns in a table using the wildcard '*'
+
+~~~
+SELECT * FROM articles;
+~~~
+{: .sql}
+
+This will often give a messy result in Sqlite depending on the number and size of columns.
+
+If you work with a table you havent made yourself (like in this case), you will not know how many columns, or the
+kinds of columns it has. To list the columns of a table you can use the PRAGMA table_info() command:
+
+~~~
+PRAGMA table_info(articles);
 ~~~
 {: .sql}
 
@@ -50,8 +94,7 @@ If we want only the unique values so that we can quickly see the ISSNs of
 journals included in the collection, we use `DISTINCT`
 
 ~~~
-SELECT DISTINCT issns
-FROM articles;
+SELECT DISTINCT issns FROM articles;
 ~~~
 {: .sql}
 
@@ -59,8 +102,7 @@ If we select more than one column, then the distinct pairs of values are
 returned
 
 ~~~
-SELECT DISTINCT issns, day, month, year
-FROM articles;
+SELECT DISTINCT issns, day, month, year FROM articles;
 ~~~
 {: .sql}
 
@@ -71,8 +113,7 @@ For example, if we wanted to look at the relative popularity of an article,
 so we divide by 10 (because we know the most popular article has 10 citations).
 
 ~~~
-SELECT first_author, citation_count/10.0
-FROM articles;
+SELECT first_author, citation_count/10.0 FROM articles;
 ~~~
 {: .sql}
 
@@ -82,8 +123,7 @@ any arithmetic operators (`+`, `-`, `*`, and `/`) and a variety of built-in
 functions. For example, we could round the values to make them easier to read.
 
 ~~~
-SELECT first_author, title, ROUND(author_count/16.0, 2)
-FROM articles;
+SELECT first_author, title, ROUND(author_count/16.0, 2) FROM articles;
 ~~~
 {: .sql}
 
@@ -114,9 +154,7 @@ For example, suppose we want the data on _Theory and Applications of Mathematics
 & Computer Science_ published after June:
 
 ~~~
-SELECT *
-FROM articles
-WHERE (issns='2067-2764|2247-6202') AND (month > 06);
+SELECT * FROM articles WHERE (issns='2067-2764|2247-6202') AND (month > 06);
 ~~~
 {: .sql}
 
@@ -128,9 +166,7 @@ If we wanted to get data for the *Humanities* and *Religions* journals, which ha
 ISSNs codes `2076-0787` and `2077-1444`, we could combine the tests using OR:
 
 ~~~
-SELECT *
-FROM articles
-WHERE (issns = '2076-0787') OR (issns = '2077-1444');
+SELECT * FROM articles WHERE (issns = '2076-0787') OR (issns = '2077-1444');
 ~~~
 {: .sql}
 
@@ -148,9 +184,7 @@ to understand.  It is equivalent to saying `WHERE (issns = '2076-0787') OR (issn
 = '2077-1444') OR (issns = '2067-2764|2247-6202')`, but reads more neatly:
 
 ~~~
-SELECT *
-FROM articles
-WHERE (month > 06) AND (issns IN ('2076-0787', '2077-1444', '2067-2764|2247-6202'));
+SELECT * FROM articles WHERE (month > 06) AND (issns IN ('2076-0787', '2077-1444', '2067-2764|2247-6202'));
 ~~~
 {: .sql}
 
@@ -185,9 +219,7 @@ We can also sort the results of our queries by using `ORDER BY`.
 For simplicity, let’s go back to the articles table and alphabetize it by issns.
 
 ~~~
-SELECT *
-FROM articles
-ORDER BY issns ASC;
+SELECT * FROM articles ORDER BY issns ASC;
 ~~~
 {: .sql}
 
@@ -195,9 +227,7 @@ The keyword `ASC` tells us to order it in Ascending order.
 We could alternately use `DESC` to get descending order.
 
 ~~~
-SELECT *
-FROM articles
-ORDER BY first_author DESC;
+SELECT * FROM articles ORDER BY first_author DESC;
 ~~~
 {: .sql}
 
@@ -207,9 +237,7 @@ We can also sort on several fields at once.
 To truly be alphabetical, we might want to order by genus then species.
 
 ~~~
-SELECT *
-FROM articles
-ORDER BY issns DESC, first_author ASC;
+SELECT * FROM articles ORDER BY issns DESC, first_author ASC;
 ~~~
 {: .sql}
 
@@ -227,10 +255,7 @@ it.  For example, let’s say we want to order the articles by their ISSN, but
 we only want to see Authors and Titles.
 
 ~~~
-SELECT authors, title
-FROM articles
-WHERE issns = '2067-2764|2247-6202'
-ORDER BY date ASC, first_author ASC;
+SELECT authors, title FROM articles WHERE issns = '2067-2764|2247-6202' ORDER BY date ASC, first_author ASC;
 ~~~
 {: .sql}
 

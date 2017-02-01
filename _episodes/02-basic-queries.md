@@ -135,7 +135,6 @@ SELECT first_author, title, ROUND(author_count/16.0, 2) FROM articles;
 > In SQLite, if you divide an integer by an integer, you get an integer, removing everything behind
 > the decimal, making 0.9 ~ 0 etc.
 
- hg
  
 > ## Challenge
 >

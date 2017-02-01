@@ -80,7 +80,7 @@ journals published during 2015.
 3. Unzip and extract the files you downloaded into the sources-folder
 4. There are several CSV-files, but we will be using articles.csv and journals.csv
 
-## Import CSV-files into tables in sqlite
+## Import CSV-files into tables in SQlite
 In order to work with the data in the CSV-files, we have to import them into SQlite 
 and in the process turn them into dabase tables.
 This can be a bit cumbersome, so for the purpose of this course we have made a script
@@ -100,4 +100,21 @@ $ sqlite3 libcarp.sqlite3
 ~~~
 {: .sql}
 
-You should then see a new prompt looking like this `sqlite>`
+You should then see some info and a new prompt looking something like this:
+~~~
+SQLite version 3.6.20
+Enter ".help" for instructions
+Enter SQL statements terminated with a ";"
+sqlite>
+~~~
+{: .sql}
+In order to see which tables you have in your databatase you can type:
+~~~
+.tables
+~~~
+{: .sql}
+And the tables `articles` `journals` will be listed
+
+To list all the available commands in SQlite, you can type `.help` or `.h`.
+To exit SQLite and return to the shell command line, you can use either
+`.quit` or `.q`, or `.exit` or `.e`.

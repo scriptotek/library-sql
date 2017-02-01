@@ -6,9 +6,11 @@ questions:
 - "What is SQL? Why is it useful?"
 objectives:
 - "to be able to outline what SQL and databases are"
+- "open a database with Sqlite3 from the unix shell
 keypoints:
 - "SQL (Structured Query Language) is a query language used to interact with databases"
 - "Databases contain data organized in tables"
+- "SQLite is a database management system"
 ---
 
 ## What is SQL?
@@ -77,14 +79,16 @@ journals published during 2015.
     [here](https://github.com/uio-carpentry/2017-02-02-librarycarpentry/raw/gh-pages/data/sqlite-lesson.zip).
 2. Unzip the file on your Desktop.
 
-The sqlite-lesson folder contains a folder called source containing CSV files 
-(comma separated files) `articles.csv` and `journals.csv`; and a bash script `import.sh`. 
-Copy the source folder and import.sh into the sqlite folder inside the library carpentry folder.
+The sqlite-lesson folder contains a folder called source containing:
+1. 2 CSV files (comma separated files), `articles.csv` and `journals.csv`
+2. A bash script, `import.sh`. 
+
+Copy the `source` folder and `import.sh` into the sqlite folder inside the library carpentry folder.
 
 ## Import the CSV files into tables in SQLite
 In order to work with the data in the CSV files, we have to import them into SQlite 
-and in the process turn them into dabase tables.
-This can be a bit cumbersome, so for the purpose of this course we have made a script
+and in the process turn them into dabase tables. This can be a bit cumbersome, so for the
+purpose of this course we have made a script
 that does this:
 
 1. Make sure you are in the sqlite-folder and that the source folder is also there. 
@@ -112,7 +116,8 @@ sqlite>
 ~~~
 {: .sql}
 
-Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell. This shell has its own set of commands. For example, in order to see which tables you have in your databatase you can type:
+Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell. 
+This shell has its own set of commands. For example, in order to see which tables you have in your databatase you can type:
 
 ~~~
 .tables

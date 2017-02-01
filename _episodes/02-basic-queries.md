@@ -133,7 +133,7 @@ SELECT first_author, title, ROUND(author_count/16.0, 2) FROM articles;
 
 > Note that we divide by `10.0` and `16.0` instead of `10` and `16` to avoid losing the remainder.
 > In SQLite, if you divide an integer by an integer, you get an integer, removing everything behind
-> the decimal, making 0.9 ~ 0 etc.
+> the decimal, making 9/10 = 0 instead of 0.9.
 
 &nbsp;
 
@@ -148,8 +148,7 @@ SELECT first_author, title, ROUND(author_count/16.0, 2) FROM articles;
 Databases can also filter data – selecting only the data meeting certain
 criteria.  For example, let’s say we only want data for a specific ISSN
 for the _Theory and Applications of Mathematics & Computer Science_ journal,
-which has a ISSN code 2067-2764|2247-6202.  We need to add a
-`WHERE` clause to our query:
+which has a ISSN code 2067-2764|2247-6202.  We need to add a `WHERE` clause to our query:
 
 ~~~
 SELECT *

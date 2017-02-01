@@ -64,11 +64,11 @@ the columns are shown, cutting off the `title` and `authors` columns.
 You can change the width of the columns with `.width` like this:
 
 ~~~
-.width 70 10
+.width 60 10
 ~~~
 {: .sql}
 
-The `.width 70 10` tells the Sqlite to show the first 70 characters of the `title` column 
+The `.width 60 10` tells the Sqlite to show the first 60 characters of the `title` column 
 and the first 10 characters of the `authors` column.
 
 To select all of the columns in a table using the wildcard '*'
@@ -80,8 +80,9 @@ SELECT * FROM articles;
 
 This will often give a messy result in Sqlite depending on the number and size of columns.
 
-If you work with a table you havent made yourself (like in this case), you will not know how many columns, or the
-kinds of columns it has. To list the columns of a table you can use the PRAGMA table_info() command:
+If you work with a table you havent made yourself (like in this case), you will not know how many columns, 
+the names of the columns or the kinds of columns it has. To list the columns of a table you can use the 
+PRAGMA table_info() command:
 
 ~~~
 PRAGMA table_info(articles);

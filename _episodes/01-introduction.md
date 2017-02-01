@@ -74,12 +74,30 @@ journals published during 2015.
 
 
 ## Download dataset
-1. Download the CSV files from
+1. Download the CSV (Comma separated) files from
     [Figshare](https://dx.doi.org/10.6084/m9.figshare.3409471)
 2. Create a folder 'sources' in the sqlite folder
 3. Unzip and extract the files you downloaded into the sources-folder
+4. There are several CSV-files, but we will be using articles.csv and journals.csv
 
 ## Import CSV-files into tables in sqlite
+In order to work with the data in the CSV-files, we have to import them into SQlite 
+and in the process turn them into dabase tables.
+This can be a bit cumbersome, so for the purpose of this course we have made a script
+that does this:
+
 1. Download the script import.sh from here :xxxxxxxxxxxxxxxxxxxx, and place it in the sqlite-folder
 2. Run import.sh by writing 'bash import.sh in the unix prompt
+3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
+ _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
 
+##Sqlite3
+Sqlite3 is the SQLite version we are using in this course. Let's open `libcarp.sqlite3`,
+the newly made database containing the tables `articles` and `journals` made from the CSV-files.
+To open a database with SQLite from the unix prompt, write sqlite3 and the name of the database:
+~~~
+$ sqlite3 libcarp.sqlite3
+~~~
+{: .sql}
+
+You should then see a new prompt looking like this `sqlite>`

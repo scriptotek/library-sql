@@ -77,14 +77,18 @@ journals published during 2015.
     [here](https://github.com/uio-carpentry/2017-02-02-librarycarpentry/raw/gh-pages/data/sqlite-lesson.zip).
 2. Unzip the file on your Desktop.
 
-## Import CSV-files into tables in SQlite
-In order to work with the data in the CSV-files, we have to import them into SQlite 
+The sqlite-lesson folder contains a folder called source containing CSV files 
+(comma separated files) `articles.csv` and `journals.csv`; and a bash script `import.sh`. 
+Copy the source folder and import.sh into the sqlite folder inside the library carpentry folder.
+
+## Import the CSV files into tables in SQLite
+In order to work with the data in the CSV files, we have to import them into SQlite 
 and in the process turn them into dabase tables.
 This can be a bit cumbersome, so for the purpose of this course we have made a script
 that does this:
 
-1. Download the script import.sh from here :xxxxxxxxxxxxxxxxxxxx, and place it in the sqlite-folder
-2. Run import.sh by writing 'bash import.sh in the unix prompt
+1. Make sure you are in the sqlite-folder and that the source folder is also there. 
+2. Run import.sh by writing 'bash import.sh in the prompt
 3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
  _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
 

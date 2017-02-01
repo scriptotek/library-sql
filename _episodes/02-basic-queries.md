@@ -69,38 +69,41 @@ You can change the width of the columns with `.width` like this:
 {: .sql}
 
 The `.width 60 10` tells the Sqlite to show the first 60 characters of the `title` column 
-and the first 10 characters of the `authors` column.
+and the first 10 characters of the `authors` column. To reset the width settings, you can 
+use `.width auto`.
 
-To select all of the columns in a table using the wildcard '*'
+To select __all__ of the columns in a table using the wildcard '*'
 
 ~~~
 SELECT * FROM articles;
 ~~~
 {: .sql}
 
-This will often give a messy result in Sqlite depending on the number and size of columns.
-
-If you work with a table you havent made yourself (like in this case), you will not know how many columns, 
-the names of the columns or the kinds of columns it has. To list the columns of a table you can use the 
-PRAGMA table_info() command:
+This will often give a messy result in Sqlite depending on the number and size of columns, so often it's
+better to be more specific when you select columns.
+If you work with a table you haven't made yourself (like in this case), you will not know the number of columns, 
+or their names or data types. To list the columns of a table you can use `PRAGMA table_info();`
 
 ~~~
 PRAGMA table_info(articles);
 ~~~
 {: .sql}
 
+The most useful for you in this course, will be the name and the type columns.
+
 ## Unique values
 
-If we want only the unique values so that we can quickly see the ISSNs of
-journals included in the collection, we use `DISTINCT`
+If we want to avoid seeing duplicate entries in a column we use `DISTINCT`.
+For example, if we want a list of all the ISSNs in the `articles` table, 
+but we know that some articles are published in the same journal
+and we don't want duplicates, we can use this query:
 
 ~~~
 SELECT DISTINCT issns FROM articles;
 ~~~
 {: .sql}
 
-If we select more than one column, then the distinct pairs of values are
-returned
+If we select more than one column, then the distinct __combinations__ of values are returned:
 
 ~~~
 SELECT DISTINCT issns, day, month, year FROM articles;
@@ -111,7 +114,7 @@ SELECT DISTINCT issns, day, month, year FROM articles;
 
 We can also do calculations with the values in a query.
 For example, if we wanted to look at the relative popularity of an article,
-so we divide by 10 (because we know the most popular article has 10 citations).
+we divide by 10 (because we know the most popular article has 10 citations).
 
 ~~~
 SELECT first_author, citation_count/10.0 FROM articles;
@@ -127,6 +130,10 @@ functions. For example, we could round the values to make them easier to read.
 SELECT first_author, title, ROUND(author_count/16.0, 2) FROM articles;
 ~~~
 {: .sql}
+
+>Note that we divide by `10.0` and `16.0` instead of `10` and `16` to avoid losing the remainder.
+>In SQLite, if you divide an integer by an integer, you get an integer, removing everything behind
+>the decimal, making 0.9 ~ 0 etc.
 
 > ## Challenge
 >

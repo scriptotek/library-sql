@@ -44,11 +44,11 @@ Then turn on the display of column headers.
 ~~~
 {: .sql}
 
-Note that these commands like (`.quit`) are not terminated by a semicolon, in fact they __wont__ work
-if you put a semicolon at the end. __Rule:__ If it starts with a period, it does not end with semicolon.
+Note that these commands (like `.quit`) are not terminated by a semicolon, in fact they __wont__ work
+if you put a semicolon at the end. __Rule:__ If it starts with a period, it must not end with semicolon!
 
-Let's try and see how `.mode column` and  `.header on` have affected our output, 
-by re-running the query from above, but now let's add a `LIMIT` clause:
+Let's try and see how `.mode column` and `.header on` have affected our output, 
+by re-running the query from above - but now let's add a `LIMIT` clause:
 
 ~~~
 SELECT title, authors, issns FROM articles LIMIT 10;

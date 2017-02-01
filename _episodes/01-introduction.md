@@ -79,9 +79,9 @@ journals published during 2015.
     [here](https://github.com/uio-carpentry/2017-02-02-librarycarpentry/raw/gh-pages/data/sqlite-lesson.zip).
 2. Unzip the file on your Desktop.
 
-The sqlite-lesson folder contains a folder called source containing:
+The sqlite-lesson folder contains:
 
-1. Two CSV files (comma separated files), `articles.csv` and `journals.csv`.
+1. A `source` folder containing 2 CSV files (comma separated files), `articles.csv` and `journals.csv`.
 2. A bash script, `import.sh`. 
 
 Copy the `source` folder and `import.sh` into the sqlite folder inside the library carpentry folder.

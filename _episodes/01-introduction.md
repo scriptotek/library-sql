@@ -72,13 +72,10 @@ teach you will apply to the other database systems as well.
 The data we will be using is a catalogue of journal articles from 51 different
 journals published during 2015.
 
-
 ## Download dataset
-1. Download the CSV (Comma separated) files from
-    [Figshare](https://dx.doi.org/10.6084/m9.figshare.3409471)
-2. Create a folder 'sources' in the sqlite folder
-3. Unzip and extract the files you downloaded into the sources-folder
-4. There are several CSV-files, but we will be using articles.csv and journals.csv
+1. Download a zip file with the dataset from
+    [here](https://github.com/uio-carpentry/2017-02-02-librarycarpentry/raw/gh-pages/data/sqlite-lesson.zip).
+2. Unzip the file on your Desktop.
 
 ## Import CSV-files into tables in SQlite
 In order to work with the data in the CSV-files, we have to import them into SQlite 

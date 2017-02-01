@@ -95,12 +95,14 @@ that does this:
 Sqlite3 is the SQLite version we are using in this course. Let's open `libcarp.sqlite3`,
 the newly made database containing the tables `articles` and `journals` made from the CSV-files.
 To open a database with SQLite from the unix prompt, write sqlite3 and the name of the database:
+
 ~~~
 $ sqlite3 libcarp.sqlite3
 ~~~
 {: .sql}
 
 You should then see some info and a new prompt looking something like this:
+
 ~~~
 SQLite version 3.6.20
 Enter ".help" for instructions
@@ -108,11 +110,14 @@ Enter SQL statements terminated with a ";"
 sqlite>
 ~~~
 {: .sql}
+
 In order to see which tables you have in your databatase you can type:
+
 ~~~
 .tables
 ~~~
 {: .sql}
+
 And the tables `articles` `journals` will be listed
 
 To list all the available commands in SQlite, you can type `.help` or `.h`.

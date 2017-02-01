@@ -91,7 +91,7 @@ that does this:
 3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
  _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
 
-##Sqlite3
+## Sqlite3
 Sqlite3 is the SQLite version we are using in this course. Let's open `libcarp.sqlite3`,
 the newly made database containing the tables `articles` and `journals` made from the CSV-files.
 To open a database with SQLite from the unix prompt, write sqlite3 and the name of the database:

@@ -80,7 +80,8 @@ journals published during 2015.
 2. Unzip the file on your Desktop.
 
 The sqlite-lesson folder contains a folder called source containing:
-1. 2 CSV files (comma separated files), `articles.csv` and `journals.csv`
+
+1. Two CSV files (comma separated files), `articles.csv` and `journals.csv`.
 2. A bash script, `import.sh`. 
 
 Copy the `source` folder and `import.sh` into the sqlite folder inside the library carpentry folder.

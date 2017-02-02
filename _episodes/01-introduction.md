@@ -97,8 +97,11 @@ to import the rest of the files.
 Unfortunately, SQLite does not like CSV files that have commas in excess of those that delimit the different columns, and will confuse these for delimiters when they really just are normal commas in senteces. By importing a CSV file that looks like this: 
 
 1,Richard Dawkins,The Blind Watchmaker
+
 2,Douglas Adams,"So long, and thanks for all the fish"
-3,"Jane B. Reece, Lisa A. Urry",Campbell Biology 
+
+3,"Jane B. Reece, Lisa A. Urry",Campbell Biology
+
 
 We want something like this:
 

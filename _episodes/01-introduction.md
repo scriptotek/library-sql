@@ -178,7 +178,7 @@ To see that this table was created, you can type:
 ~~~
 {: .sql}
 
-To import the contents of  `articles-csv.tsv` into the table `articles`., type these two commands, pressing the enter key for each one:
+To import the contents of  `articles-csv.tsv` into the table `articles`, type these two commands, pressing the enter key for each one:
 ~~~
 .separator \t
 .import sources/articles-csv.tsv articles
@@ -194,15 +194,31 @@ These commands do two things:
 //Replace this with the above lines, if you are only using the script to import the tables
 This shell has its own set of commands. For example, in order to see which tables you have in your databatase you can type:
 -->
-To see that the contents were  was imported, you can type:
+
+We still have four other files we need to prepare with OpenRefine and mak tables to import into, but this is a lot of work!
+Luckily there is also another option, and that is to use a script to do this for us.
+Sometimes taking the time to write a script can save a lot of tedious work.
+
+To run this script, we need to exit Sqlite and go back to the bash shell. 
+You can type either:
+`.quit` or `.q`, or `.exit` or `.e`.
+
+Once you are back in the bash shell, make sure you are in the sqlite folder, and write
+> $ `bash import.sh`
+
+`import.sh` is the script, and bash is what you write infront of it to tell the shell to execute it.
+
+When the script is finished, go back into Sqlite3 by typing:
+~~~
+$ sqlite3 libcarp.sqlite3
+~~~
+{: .sql}
+
+To see that the new tables were made, you can again type:
 ~~~
 .tables
 ~~~
 {: .sql}
-
-
-
-But we still need to 
 
 And the tables  `articles` `journals` `languages` `publishers` `licences` will be listed
 

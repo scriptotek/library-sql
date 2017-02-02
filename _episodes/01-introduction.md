@@ -94,15 +94,43 @@ We will do this with OpenRefine with one file to show how it's done manually; an
 to import the rest of the files.
 
 ## Readying a CSV file with OpenRefine
+Unfortunately, SQLite does not like CSV files that have commas in excess of those that delimit the different columns, and will confuse these for delimiters when they really just are normal commas in senteces. By importing a CSV file that looks like this: 
+
+1,Richard Dawkins,The Blind Watchmaker
+2,Douglas Adams,"So long, and thanks for all the fish"
+3,"Jane B. Reece, Lisa A. Urry",Campbell Biology 
+
+We want something like this:
+
+|     |                             |                                      |
+| --- | --------------------------- | ------------------------------------ |
+| 1   | Richard Dawkins             | The Blind Watchmaker                 |
+| 2   | Douglas Adams               | So long, and thanks for all the fish |
+| 3   | Jane B. Reece, Lisa A. Urry | Campbell Biology                     |
+
+But would end up getting this:
+
+|     |                 |                      |                             |
+| --- | --------------- | -------------------- | --------------------------- |
+| 1   | Richard Dawkins | The Blind Watchmaker |                             |
+| 2   | Douglas Adams   | So long              | and thanks for all the fish |
+| 3   | Jane B. Reece   | Lisa A. Urry         | Campbell Biology            |
+
+Because SQLite spilts into columns at __ALL__ the commas
+
 1. Browse to the file `articles.csv` in the `sql-lessons\source` folder and click `Next`.
 2. Click `Create Projec` (in the top right).
 3. Click `Export` -> `Custom Tabular Exporter` and __uncheck__ `Output column headers`.
-4. Go to the `Download` tab and make sure `Tab-separated values (TSV)` is checked
-5. Click `Download`. Go to the Download-folder and copy the file `articles.csv.tsv` to the sqlite `sources` folder
+4. Go to the `Download` tab and make sure `Tab-separated values (TSV)` is checked.
+5. Click `Download`. Go to the Download-folder and copy the file `articles-csv.tsv` to the sqlite `sources` folder.
+
+
 
 <!--
-//This section should be used if OpenRefine is not part of the previous session(s)
-
+//This section should be replaced by the one above, if OpenRefine is not part of the previous session(s)
+## Import the CSV files into tables in SQLite
+In order to work with the data in the CSV files, we have to import them into SQLite 
+and in the process turn them into dabase tables. 
 This can be a bit cumbersome, so for the purpose of this course we have made a script
 that does this:
 
@@ -110,12 +138,15 @@ that does this:
 2. Run import.sh by writing 'bash import.sh in the prompt
 3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
  _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
--->
+
 ## Sqlite3
 Sqlite3 is the SQLite version we are using in this course. Let's open `libcarp.sqlite3`,
 the newly made database containing the tables made from the 5 CSV-files.
 To open a database with SQLite from the unix prompt, write sqlite3 and the name of the database:
-
+-->
+## Sqlite3
+Sqlite3 is the SQLite version we are using in this course. Let's create and open the database `libcarp.sqlite3`,
+We both create and open databases with SQLite from the unix prompt by writing sqlite3 and the name of the database:
 ~~~
 $ sqlite3 libcarp.sqlite3
 ~~~
@@ -131,8 +162,15 @@ sqlite>
 ~~~
 {: .sql}
 
-Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell. 
+Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell with its own set of commands.
+We will now import the CSV file `articles-csv.tsv` into a table with the name `articles`.
+Because we prepared the file for import with 
+
+<!--
+//Replace this with the above lines, if you are only using the script to import the tables
 This shell has its own set of commands. For example, in order to see which tables you have in your databatase you can type:
+
+-->
 
 ~~~
 .tables

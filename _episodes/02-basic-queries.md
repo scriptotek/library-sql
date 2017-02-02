@@ -58,8 +58,8 @@ SELECT title, authors, issns FROM articles LIMIT 10;
 The `LIMIT 10` clause will show only the 10 first rows in the table.
 
 We can now see that `.header on` shows a header row, and that `.mode column` snugly lines up the 
-columns making them much easier to read. The drawback with `.mode column` is that only a limited length of 
-the columns are shown, cutting off the `title` and `authors` columns.
+columns making them much easier to read. The drawback with `.mode column` is that only a limited width of 
+the columns are shown, cutting off the title and authors.
 
 You can change the width of the columns with `.width` like this:
 
@@ -69,8 +69,8 @@ You can change the width of the columns with `.width` like this:
 {: .sql}
 
 The `.width 60 10` tells the Sqlite to show the first 60 characters of the `title` column 
-and the first 10 characters of the `authors` column. To reset the width settings, you can 
-use `.width auto`.
+and the first 10 characters of the `authors` column. If you have more columns, add more numbers.
+To reset the width settings, you can use `.width auto`.
 
 To select __all__ of the columns in a table using the wildcard '*'
 
@@ -90,6 +90,12 @@ PRAGMA table_info(articles);
 {: .sql}
 
 The most useful for you in this course, will be the name and the type columns.
+
+> ## Challenge
+>
+> Do a `PRAGMA table_info(articles)` and choose a couple of columns you want to look at, use the LIMIT clause and test different values of `.width`
+{: .challenge}
+
 
 ## Unique values
 

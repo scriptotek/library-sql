@@ -146,9 +146,11 @@ Sqlite3 is the SQLite version we are using in this course. Let's open `libcarp.s
 the newly made database containing the tables made from the 5 CSV-files.
 To open a database with SQLite from the unix prompt, write sqlite3 and the name of the database:
 -->
+
 ## Sqlite3
 Sqlite3 is the SQLite version we are using in this course. Let's create and open the database `libcarp.sqlite3`,
 We both create and open databases with SQLite from the unix prompt by writing sqlite3 and the name of the database:
+
 ~~~
 $ sqlite3 libcarp.sqlite3
 ~~~
@@ -169,16 +171,18 @@ Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash 
 But first we need to create the table to import the file into.
 Paste this into the sqlite-shell and click enter:
 
->CREATE TABLE articles (id INTEGER, Title TEXT, Authors TEXT, DOI TEXT, URL TEXT, Subjects TEXT, ISSNs TEXT, Citation TEXT, LanguageId >INTEGER, LicenceId INTEGER, Author_Count INTEGER, First_Author TEXT, Citation_Count INTEGER, Day INTEGER, Month INTEGER, Year INTEGER);
+> CREATE TABLE articles (id INTEGER, Title TEXT, Authors TEXT, DOI TEXT, URL TEXT, Subjects TEXT, ISSNs TEXT, Citation TEXT, LanguageId INTEGER, LicenceId INTEGER, Author_Count INTEGER, First_Author TEXT, Citation_Count INTEGER, Day INTEGER, Month INTEGER, Year INTEGER);
 
 You have now created the table `articles`, which we will import the content of the CSV-file into.
 To see that this table was created, you can type:
+
 ~~~
 .tables
 ~~~
 {: .sql}
 
 To import the contents of  `articles-csv.tsv` into the table `articles`, type these two commands, pressing the enter key for each one:
+
 ~~~
 .separator \t
 .import sources/articles-csv.tsv articles
@@ -209,12 +213,14 @@ Once you are back in the bash shell, make sure you are in the sqlite folder, and
 `import.sh` is the script, and bash is what you write infront of it to tell the shell to execute it.
 
 When the script is finished, go back into Sqlite3 by typing:
+
 ~~~
 $ sqlite3 libcarp.sqlite3
 ~~~
 {: .sql}
 
 To see that the new tables were made, you can again type:
+
 ~~~
 .tables
 ~~~

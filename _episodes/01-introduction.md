@@ -92,10 +92,10 @@ and in the process turn them into dabase tables. This can be a bit cumbersome, s
 purpose of this course we have made a script
 that does this:
 
-# . Make sure you are in the sqlite-folder and that the source folder is also there. 
-# 2. Run import.sh by writing 'bash import.sh in the prompt
-# 3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
-# _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
+<> . Make sure you are in the sqlite-folder and that the source folder is also there. 
+<> 2. Run import.sh by writing 'bash import.sh in the prompt
+<> 3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
+<> _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
 
 ## Sqlite3
 Sqlite3 is the SQLite version we are using in this course. Let's open `libcarp.sqlite3`,

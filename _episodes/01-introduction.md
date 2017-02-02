@@ -93,7 +93,12 @@ But you can usually not directly import CSV files into Sqlite without making som
 We will do this with OpenRefine with one file to show how it's done manually; and after, we will run a script
 to import the rest of the files.
 
-Start OpenRefine and Browse to the file `articles.csv` in the `sql-lessons\source` folder.
+## Readying a CSV file with OpenRefine
+1. Browse to the file `articles.csv` in the `sql-lessons\source` folder and click `Next`.
+2. Click `Create Projec` (in the top right).
+3. Click `Export` -> `Custom Tabular Exporter` and __uncheck__ `Output column headers`.
+4. Go to the `Download` tab and make sure `Tab-separated values (TSV)` is checked
+5. Click `Download`. Go to the Download-folder and copy the file `articles.csv.tsv` to the sqlite `sources` folder
 
 <!--
 //This section should be used if OpenRefine is not part of the previous session(s)

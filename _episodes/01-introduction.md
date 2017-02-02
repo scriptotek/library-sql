@@ -195,7 +195,7 @@ These commands do two things:
 This shell has its own set of commands. For example, in order to see which tables you have in your databatase you can type:
 -->
 
-We still have four other files we need to prepare with OpenRefine and mak tables to import into, but this is a lot of work!
+We still have four other files we need to prepare with OpenRefine and make tables to import int - but this is a lot of work!
 Luckily there is also another option, and that is to use a script to do this for us.
 Sometimes taking the time to write a script can save a lot of tedious work.
 

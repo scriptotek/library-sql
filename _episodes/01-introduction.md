@@ -166,7 +166,13 @@ sqlite>
 
 Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell with its own set of commands. We will now use one of these commands to import the newly converted tab separated file `articles-csv.tsv` into a table with the name `articles`. Because we prepared the file for import with OpenRefine, this is now possible.
 
-But first we need to create the table to import the file into
+But first we need to create the table to import the file into.
+Paste this into the sqlite-shell:
+
+>sqlite3 libcarp.sqlite3 "CREATE TABLE articles (id INTEGER, Title TEXT, Authors TEXT, DOI TEXT, URL TEXT, Subjects TEXT, ISSNs TEXT, >Citation TEXT, LanguageId INTEGER, LicenceId INTEGER, Author_Count INTEGER, First_Author TEXT, Citation_Count INTEGER, Day INTEGER, >Month INTEGER, Year INTEGER)"
+
+
+
 ~~~
 .separator \t
 .import sources/articles-csv.tsv articles

@@ -81,7 +81,8 @@ journals published during 2015.
 
 The sqlite-lesson folder contains:
 
-1. A `source` folder containing 5 CSV files (comma separated files): `articles.csv`, `journals.csv`, `languages.csv`, `publishers.csv` and `licences.csv`.
+1. A `source` folder containing 5 CSV files (comma separated files): `articles.csv`, 
+   `journals.csv`, `languages.csv`, `publishers.csv` and `licences.csv`.
 2. A bash script: `import.sh`. 
 
 Copy the `source` folder and `import.sh` into the sqlite folder inside the library carpentry folder.
@@ -163,28 +164,35 @@ sqlite>
 ~~~
 {: .sql}
 
-Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell with its own set of commands. We will now use one of these commands to import the CSV file `articles-csv.tsv` into a table with the name `articles`.
-Because we prepared the file for import with OpenRefine the this is fairly easy:
+Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell with its own set of commands. We will now use one of these commands to import the newly converted tab separated file `articles-csv.tsv` into a table with the name `articles`. Because we prepared the file for import with OpenRefine, this is now possible.
 
+But first we need to create the table to import the file into
 ~~~
-.separator \t .import 'sources/articles-csv.tsv' articles
+.separator \t
+.import sources/articles-csv.tsv articles
 ~~~
 {: .sql}
 
-This command does two things:
+These command does two things:
+1. `.separator \t` sets the delimiter, or the separator, between the columns to be the `tab` character (\t). 
+   We need to do this since the default separator of Sqlite is '|'
+2. `.import sources/articles-csv.tsv articles` imports the file `articles-csv.tsv` in the folder `sources` into the table `articles`.
 
 <!--
 //Replace this with the above lines, if you are only using the script to import the tables
 This shell has its own set of commands. For example, in order to see which tables you have in your databatase you can type:
-
 -->
-
+To see that this table was imported, you can type:
 ~~~
 .tables
 ~~~
 {: .sql}
 
-And the tables  `articles.csv` `journals.csv` `languages.csv` `publishers.csv` `licences.csv` will be listed
+If all went well, you will se the name of the table `articles` listed
+
+But we still need to 
+
+And the tables  `articles` `journals` `languages` `publishers` `licences` will be listed
 
 To list all the available commands in SQlite, you can type `.help` or `.h`.
 To exit SQLite and return to the shell command line, you can use either

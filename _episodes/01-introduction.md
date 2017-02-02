@@ -6,7 +6,7 @@ questions:
 - "What is SQL? Why is it useful?"
 objectives:
 - "to be able to outline what SQL and databases are"
-- "open a database with Sqlite3 from the unix shell
+- "open a database with Sqlite3 from the unix shell"
 keypoints:
 - "SQL (Structured Query Language) is a query language used to interact with databases"
 - "Databases contain data organized in tables"

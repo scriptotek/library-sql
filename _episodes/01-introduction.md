@@ -190,6 +190,7 @@ To import the contents of  `articles-csv.tsv` into the table `articles`, type th
 {: .sql}
 
 These commands do two things:
+
 1. `.separator \t` sets the delimiter, or the separator, between the columns to be the `tab` character (\t). 
    We need to do this since the default separator of Sqlite is '|'
 2. `.import sources/articles-csv.tsv articles` imports the file `articles-csv.tsv` in the folder `sources` into the table `articles`.

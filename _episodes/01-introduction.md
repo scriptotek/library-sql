@@ -102,16 +102,12 @@ Unfortunately, SQLite does not like CSV files that have commas in excess of thos
 
 We want something like this:
 
-|     |                             |                                      |
-| --- | --------------------------- | ------------------------------------ |
 | 1   | Richard Dawkins             | The Blind Watchmaker                 |
 | 2   | Douglas Adams               | So long, and thanks for all the fish |
 | 3   | Jane B. Reece, Lisa A. Urry | Campbell Biology                     |
 
 But would end up getting this:
 
-|     |                 |                      |                             |
-| --- | --------------- | -------------------- | --------------------------- |
 | 1   | Richard Dawkins | The Blind Watchmaker |                             |
 | 2   | Douglas Adams   | So long              | and thanks for all the fish |
 | 3   | Jane B. Reece   | Lisa A. Urry         | Campbell Biology            |

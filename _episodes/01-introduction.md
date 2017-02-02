@@ -81,8 +81,8 @@ journals published during 2015.
 
 The sqlite-lesson folder contains:
 
-1. A `source` folder containing 2 CSV files (comma separated files), `articles.csv` and `journals.csv`.
-2. A bash script, `import.sh`. 
+1. A `source` folder containing 5 CSV files (comma separated files): `articles.csv`, `journals.csv`, `languages.csv`, `publishers.csv` and `licences.csv`.
+2. A bash script: `import.sh`. 
 
 Copy the `source` folder and `import.sh` into the sqlite folder inside the library carpentry folder.
 
@@ -92,14 +92,14 @@ and in the process turn them into dabase tables. This can be a bit cumbersome, s
 purpose of this course we have made a script
 that does this:
 
-1. Make sure you are in the sqlite-folder and that the source folder is also there. 
-2. Run import.sh by writing 'bash import.sh in the prompt
-3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
- _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
+# . Make sure you are in the sqlite-folder and that the source folder is also there. 
+# 2. Run import.sh by writing 'bash import.sh in the prompt
+# 3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
+# _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
 
 ## Sqlite3
 Sqlite3 is the SQLite version we are using in this course. Let's open `libcarp.sqlite3`,
-the newly made database containing the tables `articles` and `journals` made from the CSV-files.
+the newly made database containing the tables made from the 5 CSV-files.
 To open a database with SQLite from the unix prompt, write sqlite3 and the name of the database:
 
 ~~~
@@ -125,7 +125,7 @@ This shell has its own set of commands. For example, in order to see which table
 ~~~
 {: .sql}
 
-And the tables `articles` `journals` will be listed
+And the tables  `articles.csv` `journals.csv` `languages.csv` `publishers.csv` `licences.csv` will be listed
 
 To list all the available commands in SQlite, you can type `.help` or `.h`.
 To exit SQLite and return to the shell command line, you can use either

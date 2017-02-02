@@ -148,8 +148,7 @@ SELECT first_author, title, ROUND(author_count/16.0, 2) FROM articles;
 
 > ## Challenge
 >
-> Write a query that returns the title, first_author, citation_count,
-> author_count, month and year
+> Write a query that returns a unique list of first authors
 {: .challenge}
 
 ## Filtering

@@ -167,19 +167,25 @@ sqlite>
 Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell with its own set of commands. We will now use one of these commands to import the newly converted tab separated file `articles-csv.tsv` into a table with the name `articles`. Because we prepared the file for import with OpenRefine, this is now possible.
 
 But first we need to create the table to import the file into.
-Paste this into the sqlite-shell:
+Paste this into the sqlite-shell and click enter:
 
->CREATE TABLE articles (id INTEGER, Title TEXT, Authors TEXT, DOI TEXT, URL TEXT, Subjects TEXT, ISSNs TEXT, Citation TEXT, LanguageId >INTEGER, LicenceId INTEGER, Author_Count INTEGER, First_Author TEXT, Citation_Count INTEGER, Day INTEGER, Month INTEGER, Year INTEGER)"
+>CREATE TABLE articles (id INTEGER, Title TEXT, Authors TEXT, DOI TEXT, URL TEXT, Subjects TEXT, ISSNs TEXT, Citation TEXT, LanguageId >INTEGER, LicenceId INTEGER, Author_Count INTEGER, First_Author TEXT, Citation_Count INTEGER, Day INTEGER, Month INTEGER, Year INTEGER);
 
+You have now created the table `articles`, which we will import the content of the CSV-file into.
+To see that this table was created, you can type:
+~~~
+.tables
+~~~
+{: .sql}
 
-
+To import the contents of  `articles-csv.tsv` into the table `articles`., type these two commands, pressing the enter key for each one:
 ~~~
 .separator \t
 .import sources/articles-csv.tsv articles
 ~~~
 {: .sql}
 
-These command does two things:
+These commands do two things:
 1. `.separator \t` sets the delimiter, or the separator, between the columns to be the `tab` character (\t). 
    We need to do this since the default separator of Sqlite is '|'
 2. `.import sources/articles-csv.tsv articles` imports the file `articles-csv.tsv` in the folder `sources` into the table `articles`.
@@ -188,13 +194,13 @@ These command does two things:
 //Replace this with the above lines, if you are only using the script to import the tables
 This shell has its own set of commands. For example, in order to see which tables you have in your databatase you can type:
 -->
-To see that this table was imported, you can type:
+To see that the contents were  was imported, you can type:
 ~~~
 .tables
 ~~~
 {: .sql}
 
-If all went well, you will se the name of the table `articles` listed
+
 
 But we still need to 
 

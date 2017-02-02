@@ -87,16 +87,25 @@ The sqlite-lesson folder contains:
 Copy the `source` folder and `import.sh` into the sqlite folder inside the library carpentry folder.
 
 ## Import the CSV files into tables in SQLite
-In order to work with the data in the CSV files, we have to import them into SQlite 
-and in the process turn them into dabase tables. This can be a bit cumbersome, so for the
-purpose of this course we have made a script
+In order to work with the data in the CSV files, we have to import them into SQLite 
+and in the process turn them into dabase tables. 
+But you can usually not directly import CSV files into Sqlite without making some minor changes to them first.
+We will do this with OpenRefine with one file to show how it's done manually; and after, we will run a script
+to import the rest of the files.
+
+Start OpenRefine and Browse to the file `articles.csv` in the `sql-lessons\source` folder.
+
+<!--
+//This section should be used if OpenRefine is not part of the previous session(s)
+
+This can be a bit cumbersome, so for the purpose of this course we have made a script
 that does this:
 
-[//]: # . Make sure you are in the sqlite-folder and that the source folder is also there. 
-[//]: # 2. Run import.sh by writing 'bash import.sh in the prompt
-[//]: # 3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
-[//]: # _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
-
+1. Make sure you are in the sqlite-folder and that the source folder is also there. 
+2. Run import.sh by writing 'bash import.sh in the prompt
+3. Then write: ls libcarp.sqlite3 to see that the database was created successfully 
+ _(hint: you can use the `tab-key` to autocomplete 'ls l..')_  
+-->
 ## Sqlite3
 Sqlite3 is the SQLite version we are using in this course. Let's open `libcarp.sqlite3`,
 the newly made database containing the tables made from the 5 CSV-files.

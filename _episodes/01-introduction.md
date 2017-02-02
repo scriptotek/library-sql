@@ -102,7 +102,7 @@ Unfortunately, SQLite does not like CSV files that have commas in excess of thos
 
 We want something like this:
 
-| gf  | fgfg                        |fg                                    |
+| Id  | Name                        | Title                                |
 | --- | --------------------------- | ------------------------------------ |
 | 1   | Richard Dawkins             | The Blind Watchmaker                 |
 | 2   | Douglas Adams               | So long, and thanks for all the fish |
@@ -110,7 +110,7 @@ We want something like this:
 
 But would end up getting this:
 
-| fg  | gfg             | fgfg                 | gg                          |
+| Id  | Name            | Name + Title         | Title + Empty               |
 | --- | --------------- | -------------------- | --------------------------- |
 | 1   | Richard Dawkins | The Blind Watchmaker |                             |
 | 2   | Douglas Adams   | So long              | and thanks for all the fish |

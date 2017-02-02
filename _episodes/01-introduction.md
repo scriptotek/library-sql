@@ -200,7 +200,7 @@ These commands do two things:
 This shell has its own set of commands. For example, in order to see which tables you have in your databatase you can type:
 -->
 
-We still have four other files we need to prepare with OpenRefine and make tables to import int - but this is a lot of work!
+We still have four other files we need to prepare with OpenRefine and make tables to import into - but this is a lot of work!
 Luckily there is also another option, and that is to use a script to do this for us.
 Sometimes taking the time to write a script can save a lot of tedious work.
 
@@ -227,7 +227,7 @@ To see that the new tables were made, you can again type:
 ~~~
 {: .sql}
 
-And the tables  `articles` `journals` `languages` `publishers` `licences` will be listed
+And the tables `articles` `journals` `languages` `publishers` `licences` will be listed
 
 To list all the available commands in SQlite, you can type `.help` or `.h`.
 To exit SQLite and return to the shell command line, you can use either

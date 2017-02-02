@@ -169,7 +169,7 @@ Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash 
 But first we need to create the table to import the file into.
 Paste this into the sqlite-shell:
 
->sqlite3 libcarp.sqlite3 "CREATE TABLE articles (id INTEGER, Title TEXT, Authors TEXT, DOI TEXT, URL TEXT, Subjects TEXT, ISSNs TEXT, >Citation TEXT, LanguageId INTEGER, LicenceId INTEGER, Author_Count INTEGER, First_Author TEXT, Citation_Count INTEGER, Day INTEGER, >Month INTEGER, Year INTEGER)"
+>CREATE TABLE articles (id INTEGER, Title TEXT, Authors TEXT, DOI TEXT, URL TEXT, Subjects TEXT, ISSNs TEXT, Citation TEXT, LanguageId >INTEGER, LicenceId INTEGER, Author_Count INTEGER, First_Author TEXT, Citation_Count INTEGER, Day INTEGER, Month INTEGER, Year INTEGER)"
 
 
 

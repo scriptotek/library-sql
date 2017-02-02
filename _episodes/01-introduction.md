@@ -100,8 +100,7 @@ Unfortunately, SQLite does not like CSV files that have commas in excess of thos
 2,Douglas Adams,"So long, and thanks for all the fish"<br>
 3,"Jane B. Reece, Lisa A. Urry",Campbell Biology<br>
 
-
-We want something like this:
+We expect to get a table like this:
 
 | Id  | Name                        | Title                                |
 | --- | --------------------------- | ------------------------------------ |
@@ -117,15 +116,16 @@ But would end up getting this:
 | 2   | Douglas Adams   | So long              | and thanks for all the fish |
 | 3   | Jane B. Reece   | Lisa A. Urry         | Campbell Biology            |
 
-Because SQLite spilts into columns at __ALL__ the commas
+Because SQLite spilts into columns at __ALL__ the commas.
+In reality the import will fail, but that is hardly any better!
+
+To solve this, we can use a text refining tool like OpenRefine to turn the CSV file into a format that SQLite can import.
 
 1. Browse to the file `articles.csv` in the `sql-lessons\source` folder and click `Next`.
 2. Click `Create Projec` (in the top right).
 3. Click `Export` -> `Custom Tabular Exporter` and __uncheck__ `Output column headers`.
 4. Go to the `Download` tab and make sure `Tab-separated values (TSV)` is checked.
 5. Click `Download`. Go to the Download-folder and copy the file `articles-csv.tsv` to the sqlite `sources` folder.
-
-
 
 <!--
 //This section should be replaced by the one above, if OpenRefine is not part of the previous session(s)
@@ -163,9 +163,15 @@ sqlite>
 ~~~
 {: .sql}
 
-Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell with its own set of commands.
-We will now import the CSV file `articles-csv.tsv` into a table with the name `articles`.
-Because we prepared the file for import with 
+Notice that the prompt has changed into `sqlite>`. We are no longer in the Bash shell, but in the SQLite3 shell with its own set of commands. We will now use one of these commands to import the CSV file `articles-csv.tsv` into a table with the name `articles`.
+Because we prepared the file for import with OpenRefine the this is fairly easy:
+
+~~~
+.separator \t .import 'sources/articles-csv.tsv' articles
+~~~
+{: .sql}
+
+This command does two things:
 
 <!--
 //Replace this with the above lines, if you are only using the script to import the tables

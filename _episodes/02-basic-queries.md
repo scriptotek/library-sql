@@ -93,7 +93,8 @@ The most useful for you in this course, will be the name and the type columns.
 
 > ## Challenge
 >
-> Do a `PRAGMA table_info(articles)` and choose a couple of columns you want to look at, use the LIMIT clause and test different values of `.width`
+> Do a `PRAGMA table_info(articles)` and choose a couple of columns you want to look at, 
+> use the LIMIT clause and test different values of `.width`
 {: .challenge}
 
 

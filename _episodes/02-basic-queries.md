@@ -38,6 +38,7 @@ SELECT title, authors, issns FROM articles;
 You can change some SQLite settings to make the output easier to read.
 First, set the output mode to display left-aligned columns. 
 Then turn on the display of column headers.
+
 ~~~
 .mode column
 .header on
@@ -95,9 +96,7 @@ The most useful for you in this course, will be the name and the type columns.
 >
 > Do a `PRAGMA table_info(articles)` and choose a couple of columns you want to look at, 
 > use the LIMIT clause and test different values of `.width`.
-
 {: .challenge}
-
 
 ## Unique values
 

@@ -92,6 +92,7 @@ PRAGMA table_info(articles);
 
 The most useful for you in this course, will be the name and the type columns.
 
+&nbsp;
 
 > ## Challenge
 >

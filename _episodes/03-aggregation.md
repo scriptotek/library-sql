@@ -12,23 +12,20 @@ keypoints:
 
 ## `COUNT` and `GROUP BY`
 
-Aggregation allows us to combine results by grouping records based on value and
-calculating combined values in groups.
+Aggregation allows us to group records, and do counts and calculations.
 
 Let’s go to the articles table and find out how many entries there are.
 Using the wildcard simply counts the number of records (rows)
 
 ~~~
-SELECT COUNT(*)
-FROM articles;
+SELECT COUNT(*) FROM articles;
 ~~~
 {: .sql}
 
 We can also find out how many authors have participated in these articles.
 
 ~~~
-SELECT COUNT(*), SUM(author_count)
-FROM articles;
+SELECT COUNT(*), SUM(author_count) FROM articles;
 ~~~
 {: .sql}
 
@@ -46,9 +43,7 @@ Now, let's see how many articles were published in each journal. We do this
 using a `GROUP BY` clause
 
 ~~~
-SELECT issns, COUNT( * )
-FROM articles
-GROUP BY issns;
+SELECT issns, COUNT( * ) FROM articles GROUP BY issns;
 ~~~
 {: .sql}
 
@@ -76,15 +71,12 @@ For example, we can adapt the last request we wrote to only return information
 about articles with a 10 or more published articles:
 
 ~~~
-SELECT issns, COUNT( * )
-FROM articles
-GROUP BY issns
-HAVING COUNT( * ) >= 10;
+SELECT issns, COUNT( * ) FROM articles GROUP BY issns HAVING COUNT( * ) >= 10;
 ~~~
 {: .sql}
 
-The `HAVING` keyword works exactly like the `WHERE` keyword, but uses
-aggregate functions instead of database fields.
+The `HAVING` keyword works exactly like the `WHERE` keyword, but it is used
+with aggregate functions instead of database fields.
 
 If you use `AS` in your query to rename a column, `HAVING` can use this
 information to make the query more readable. For example, in the above
@@ -92,10 +84,7 @@ query, we can call the `COUNT(*)` by another name, like
 `occurrences`. This can be written this way:
 
 ~~~
-SELECT issns, COUNT( * ) AS occurrences
-FROM articles
-GROUP BY issns
-HAVING occurrences >= 10;
+SELECT issns, COUNT( * ) AS Occurrences FROM articles GROUP BY issns HAVING occurrences >= 10;
 ~~~
 {: .sql}
 
@@ -107,7 +96,7 @@ of these groups (`HAVING`).
 > ## Challenge
 >
 > Write a query that returns, from the `articles` table, the average number of
-> `citations` for each journal, only for the journals with 5 or more citations
+> citations for each journal, only for the journals with 5 or more citations
 > on average.
 {: .challenge}
 
@@ -118,10 +107,7 @@ the aggregated column.  Let’s count the number of articles published in each
 journal, ordered by the count
 
 ~~~
-SELECT issns, COUNT( * )
-FROM articles
-GROUP BY issns
-ORDER BY COUNT( * ) DESC;
+SELECT issns, COUNT( * ) FROM articles GROUP BY issns ORDER BY COUNT( * ) DESC;
 ~~~
 {: .sql}
 
@@ -139,31 +125,24 @@ before the query itself. For example, if we want to save the query giving
 the number of journals in a view, we can write
 
 ~~~
-CREATE VIEW journal_counts AS
-SELECT issns, COUNT(*)
-FROM articles
-GROUP BY issns;
+CREATE VIEW journal_counts AS SELECT issns, COUNT( * ) FROM articles GROUP BY issns;
 ~~~
 {: .sql}
 
 Now, we will be able to access these results with a much shorter notation:
 
 ~~~
-SELECT *
-FROM journal_counts;
+SELECT * FROM journal_counts;
 ~~~
 {: .sql}
 
-Assuming we do not need this view anymore, we can remove it from the database
-almost as we would a table:
+Assuming we do not need this view anymore, we can remove it from the database:
 
 ~~~
 DROP VIEW journal_counts;
 ~~~
 {: .sql}
 
-You can also add a view using _Create View_ in the _View_ menu and see the
-results in the _Views_ tab just like a table
 
 > ## Challenge
 >

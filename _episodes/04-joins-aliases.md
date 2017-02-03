@@ -14,6 +14,8 @@ keypoints:
 
 ![](../assets/img/join.png)
 
+Say that we have a table of books on loan to users with specific `PatronIds`:
+
 | BookId | Author                           | Title                                | PatronId |
 | ------ | -------------------------------- | ------------------------------------ | -------- |
 | 1      | Richard Dawkins                  | The Blind Watchmaker                 | 3        |
@@ -26,11 +28,18 @@ keypoints:
 
 <!-- &nbsp; -->
 
+Notice that the table containing the books have no other information about the users than the `PatronIds`
+
+So, we need a table with information about the users:
+
 | PatronId | Name          | Email               | Phone    |
 | -------- | ------------- | ------------------- | -------- |
 | 1        | Kent Baimilov | kentbai@gmail.com   | 97651234 |
 | 2        | Barry Värson  | bv3445@hmotmail.com | 41658509 |
 | 3        | Anna Nas      | anna.nas@yahoo.com  | 90675213 |
+
+But that table contains no information about the users in regard to which books they have loaned. 
+Wouldn't it be great to merge these tables somehow? But wait! There is!
 
 <!-- &nbsp; -->
 

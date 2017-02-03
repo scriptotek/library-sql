@@ -272,11 +272,13 @@ The computer is basically doing this:
 
 <!-- -->
 
+ It is possible to write a query placing each clause on its own line, we recommend this for readibility.
+ 
 > ## Challenge
 >
 > Let's try to combine what we've learned so far in a single
 > query.  Using the `articles` table, write a query to display the three date fields,
 > `issn`, and `citation_count`, for articles published after June, ordered
 > alphabetically by first author name. Write the query as a single line, then
-> put each clause on its own line, and see how more legible the query becomes!
+> put each clause on its own line, and see how more readible the query becomes!
 {: .challenge}

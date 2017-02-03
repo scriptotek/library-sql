@@ -12,7 +12,7 @@ keypoints:
 
 ## Joins
 
-![](../assets/img/join.png =100x20)
+![](../assets/img/join.png)
 
 To combine data from two tables we use the SQL `JOIN` command, which comes after
 the `FROM` command.

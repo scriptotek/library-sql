@@ -270,6 +270,8 @@ The computer is basically doing this:
 
 > Clauses are written in a fixed order: `SELECT`, `FROM`, `WHERE`, then `ORDER BY`.
 
+<!-- -->
+
 > ## Challenge
 >
 > Let's try to combine what we've learned so far in a single

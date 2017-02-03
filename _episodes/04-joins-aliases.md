@@ -24,6 +24,16 @@ keypoints:
 | 6      | Douglas Adams                    | Last Chance to See                   | 1        |
 | 7      | Aldous Hyuxley                   | Brave New World                      | 1        |
 
+<!-- &nbsp; -->
+
+| PatronId | Name          | Email               | Phone    |
+| -------- | ------------- | ------------------- | -------- |
+| 1        | Kent Baimilov | kentbai@gmail.com   | 97651234 |
+| 2        | Barry Värson  | bv3445@hmotmail.com | 41658509 |
+| 3        | Anna Nas      | anna.nas@yahoo.com  | 90675213 |
+
+<!-- &nbsp; -->
+
 To combine data from two tables we use the SQL `JOIN` command, which comes after
 the `FROM` command.
 

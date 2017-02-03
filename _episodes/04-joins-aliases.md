@@ -102,10 +102,11 @@ wanted average number of authors for articles on different journals, we
 could do something like
 
 ~~~
-SELECT articles.issns, journal_title, ROUND(AVG(author_count), 2)
-FROM articles
-JOIN journals
-ON articles.issns = journals.issns;
+.width 30 10 10 15 3
+SELECT title, first_author, articles.issns, journal_title, ROUND(AVG(author_count), 2) 
+FROM articles 
+JOIN journals 
+ON articles.issns = journals.issns
 GROUP BY articles.issns;
 ~~~
 {: .source}
@@ -119,13 +120,16 @@ GROUP BY articles.issns;
 
 It is worth mentioning that you can join multiple tables. For example:
 
+~~~
+.width 30 15 15 2
 SELECT title, first_author, journal_title, language
 FROM articles
 JOIN journals
 ON articles.issns = journals.issns
 JOIN languages
-ON languages.id = articles.languageid
-
+ON languages.id = articles.languageid;
+~~~
+{: .source}
 > ## Challenge:
 >
 > Write a query that returns the journal title, publisher name, and number of
@@ -164,7 +168,7 @@ FROM articles a;
 ~~~
 {: .source}
 
-but using `AS` is much clearer so it is good style to include it.
+but using `AS` is much clearer so it is __good__ style to include it.
 
 ## Extra Challenges (optional)
 

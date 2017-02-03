@@ -28,7 +28,7 @@ Say that we have a table of books on loan to users with specific `PatronIds`:
 
 <!-- &nbsp; -->
 
-Notice that the table containing the books have no other information about the users than the `PatronIds`
+Notice that the table containing the books have no other information about the users than the `PatronId`
 
 So, we need a table with information about the users:
 
@@ -38,8 +38,8 @@ So, we need a table with information about the users:
 | 2        | Barry Värson  | bv3445@hmotmail.com | 41658509 |
 | 3        | Anna Nas      | anna.nas@yahoo.com  | 90675213 |
 
-But that table contains no information about the users in regard to which books they have loaned. 
-Wouldn't it be great to merge these tables somehow? But wait! There is!
+But that table contains no information about the users in regard to which books they have loaned.<br>
+Wouldn't it be great to merge these tables somehow?.. But wait! There is!
 
 <!-- &nbsp; -->
 
@@ -53,12 +53,19 @@ Wouldn't it be great to merge these tables somehow? But wait! There is!
 | 6      | Douglas Adams                    | Last Chance to See                   | 1        | Kent Baimilov | kentbai@gmail.com   | 97651234 |
 | 7      | Aldous Hyuxley                   | Brave New World                      | 1        | Kent Baimilov | kentbai@gmail.com   | 97651234 |
 
+This is the result of two tables being joined, connected to each other through the common `PatronId` column.<br>
+
 To combine data from two tables we use the SQL `JOIN` command, which comes after
 the `FROM` command.
 
 We also need to tell the computer which columns provide the link between the two
-tables using the word `ON`.  What we want is to join the data with the same
-journal name.
+tables using the word `ON`.  
+
+In the example above this join query would look something like this:
+
+> SELECT * FROM Books JOIN Users ON Books.PatronId = Users.PatronID;
+
+For our tables it would look like this:
 
 ~~~
 SELECT * FROM articles JOIN journals ON articles.issns = journals.issns;
@@ -85,10 +92,8 @@ For example, what if we wanted information on published articles in different
 journals, but instead of their ISSN we wanted the actual journal title.
 
 ~~~
-SELECT articles.issns, journal_title, title, first_author, citation_count, author_count, month, year
-FROM articles
-JOIN journals
-ON articles.issns = journals.issns;
+.width 30 10 10 20
+SELECT title, first_author, articles.issns, journal_title FROM articles JOIN journals ON articles.issns = journals.issns;
 ~~~
 {: .source}
 

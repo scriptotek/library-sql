@@ -191,42 +191,27 @@ SELECT * FROM articles WHERE (issns = '2076-0787') OR (issns = '2077-1444');
 > for all single author papers with more than 4 citations
 {: .challenge}
 
+
 ## Building more complex queries
 
 Now, lets combine the above queries to get data for the 3 journals from
 June on.  This time, let’s use IN as one way to make the query easier
 to understand.  It is equivalent to saying `WHERE (issns = '2076-0787') OR (issns
-= '2077-1444') OR (issns = '2067-2764|2247-6202')`, but reads more neatly:
+= '2077-1444') OR (issns = '1422-0067')`, but reads more neatly:
 
 ~~~
-SELECT * FROM articles WHERE (month > 06) AND (issns IN ('2076-0787', '2077-1444', '2067-2764|2247-6202'));
+SELECT title,citation,author_count FROM articles WHERE (author_count>=3) AND (issns IN ('2076-0787', '2077-1444', '1422-0067'));
 ~~~
 {: .sql}
 
 We started with something simple, then added more clauses one by one, testing
-their effects as we went along.  For complex queries, this is a good strategy,
-to make sure you are getting what you want.  Sometimes it might help to take a
+their effects as we went along. For complex queries, this is a good strategy,
+to make sure you are getting what you want. Sometimes it might help to take a
 subset of the data that you can easily see in a temporary database to practice
 your queries on before working on a larger or more complicated database.
 
-When the queries become more complex, it can be useful to add comments. In SQL,
-comments are started by `--`, and end at the end of the line. For example, a
-commented version of the above query can be written as:
-
-~~~
--- Get post June data on selected journals
--- These are in the articles table, and we are interested in all columns
-SELECT * FROM articles
--- Sampling month is in the column `month`, and we want to include
--- everything after June
-WHERE (month > 06)
--- selected journals have the `issns` 2076-0787, 2077-1444, 2067-2764|2247-6202
-AND (issns IN ('2076-0787', '2077-1444', '2067-2764|2247-6202'));
-~~~
-{: .sql}
-
-Although SQL queries often read like plain English, it is *always* useful to add
-comments; this is especially true of more complex queries.
+But when the queries become more complex, it can be useful to make them more readable
+by using the IN operator.
 
 ## Sorting
 
@@ -234,7 +219,8 @@ We can also sort the results of our queries by using `ORDER BY`.
 For simplicity, let’s go back to the articles table and alphabetize it by issns.
 
 ~~~
-SELECT * FROM articles ORDER BY issns ASC;
+.width 20 40 10
+SELECT first_author, title, issns FROM articles ORDER BY issns ASC;
 ~~~
 {: .sql}
 
@@ -242,17 +228,16 @@ The keyword `ASC` tells us to order it in Ascending order.
 We could alternately use `DESC` to get descending order.
 
 ~~~
-SELECT * FROM articles ORDER BY first_author DESC;
+SELECT first_author, title FROM articles ORDER BY first_author DESC;
 ~~~
 {: .sql}
 
 `ASC` is the default.
 
-We can also sort on several fields at once.
-To truly be alphabetical, we might want to order by genus then species.
+We can also sort on several fields at once, for example first order by `issns` then `first_authors`.
 
 ~~~
-SELECT * FROM articles ORDER BY issns DESC, first_author ASC;
+SELECT first_author, title, issns FROM articles ORDER BY issns DESC, first_author ASC;
 ~~~
 {: .sql}
 

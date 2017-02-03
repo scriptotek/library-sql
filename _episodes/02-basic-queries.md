@@ -155,29 +155,27 @@ SELECT first_author, title, ROUND(author_count/16.0, 2) FROM articles;
 
 Databases can also filter data – selecting only the data meeting certain
 criteria.  For example, let’s say we only want data for a specific ISSN
-for the _Theory and Applications of Mathematics & Computer Science_ journal,
-which has a ISSN code 2067-2764|2247-6202.  We need to add a `WHERE` clause to our query:
+for the journal _International Journal of Molecular Sciences_,
+which has a ISSN code 1422-0067.  We need to add a `WHERE` clause to our query:
 
 ~~~
-SELECT *
-FROM articles
-WHERE issns='2067-2764|2247-6202';
+.width 50 20
+SELECT title, authors FROM articles WHERE issns='1422-0067';
 ~~~
 {: .sql}
 
 
 We can use more sophisticated conditions by combining tests with `AND` and `OR`.
-For example, suppose we want the data on _Theory and Applications of Mathematics
-& Computer Science_ published after June:
+For example, suppose we want list the articles in _International Journal of Molecular Sciences_ that has two or less authors:
 
 ~~~
-SELECT * FROM articles WHERE (issns='2067-2764|2247-6202') AND (month > 06);
+SELECT title, authors,author_count FROM articles WHERE (issns='1422-0067') AND (author_count <=2);
 ~~~
 {: .sql}
 
-Note that the parentheses are not needed, but again, they help with
-readability.  They also ensure that the computer combines `AND` and `OR`
-in the way that we intend.
+Note that the parentheses are not needed in the query above, but they help with
+readability. In queries combining `AND` and `OR`, they ensure that we get the result 
+we intend.
 
 If we wanted to get data for the *Humanities* and *Religions* journals, which have
 ISSNs codes `2076-0787` and `2077-1444`, we could combine the tests using OR:

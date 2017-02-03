@@ -14,6 +14,16 @@ keypoints:
 
 ![](../assets/img/join.png)
 
+| BookId | Author                           | Title                                | PatronId |
+| ------ | -------------------------------- | ------------------------------------ | -------- |
+| 1      | Richard Dawkins                  | The Blind Watchmaker                 | 3        |
+| 2      | Douglas Adams                    | So long, and thanks for all the fish | 1        |
+| 3      | Jane B. Reece, Lisa A. Urry      | Campbell Biology                     | 3        |
+| 4      | George Orwell                    | 1984                                 | 2        |
+| 5      | Ralph Leighton,  Richard Feynman | Surely You're Joking, Mr. Feynman    | 1        |
+| 6      | Douglas Adams                    | Last Chance to See                   | 1        |
+| 7      | Aldous Hyuxley                   | Brave New World                      | 1        |
+
 To combine data from two tables we use the SQL `JOIN` command, which comes after
 the `FROM` command.
 
@@ -22,10 +32,7 @@ tables using the word `ON`.  What we want is to join the data with the same
 journal name.
 
 ~~~
-SELECT *
-FROM articles
-JOIN journals
-ON articles.issns = journals.issns;
+SELECT * FROM articles JOIN journals ON articles.issns = journals.issns;
 ~~~
 {: .source}
 
@@ -38,10 +45,7 @@ telling the manager that we want to combine `articles` with `journals` and that
 the common column is `issns`.
 
 ~~~
-SELECT *
-FROM articles
-JOIN journals
-USING (issns);
+SELECT * FROM articles JOIN journals USING (issns);
 ~~~
 {: .source}
 

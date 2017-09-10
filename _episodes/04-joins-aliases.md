@@ -35,7 +35,7 @@ So, we need a table with information about the users:
 | PatronId | Name          | Email               | Phone    |
 | -------- | ------------- | ------------------- | -------- |
 | 1        | Kent Baimilov | kentbai@gmail.com   | 97651234 |
-| 2        | Barry Värson  | bv3445@hmotmail.com | 41658509 |
+| 2        | Barry Värson  | bv3445@hotmail.com  | 41658509 |
 | 3        | Anna Nas      | anna.nas@yahoo.com  | 90675213 |
 
 But that table contains no information about the users in regard to which books they have loaned.<br>
